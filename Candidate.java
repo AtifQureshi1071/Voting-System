@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Candidate {
     Scanner s = new Scanner(System.in);
-    private int choice;
+    private int choice, a = 1;
     private char want;
 
     public static void clearScreen() {
@@ -14,7 +14,7 @@ public class Candidate {
 
     public void candidateDetail() {
         do {
-            clearScreen();
+            // clearScreen();
             System.out.println("Candidate Menu:");
             System.out.println("1. for PMLN");
             System.out.println("2. for PTI");
@@ -72,7 +72,22 @@ public class Candidate {
                     System.out.println("Invalid input:");
 
             }
-        } while (choice != 5 && want != 'n');
+            System.out.println("\nDo you want to stay!! ");
+            System.out.println("\nFor \"Yes\" Enter\"Y\" : ");
+            System.out.println("\nFor \"No\" Enter\"N\"  : ");
+            want = s.next().charAt(0);
+            do {
+                if (want == 'y' || want == 'Y') {
+                    a = 0;
+                } else if (want == 'n' || want == 'N') {
+                    a = 0;
+                } else {
+                    System.out.println("Incorrect Input. Again Enter: ");
+                    want = s.next().charAt(0);
+                }
+            } while (a == 1);
+
+        } while (want=='n'|| want=='N');
 
     }
 
