@@ -7,71 +7,50 @@ public class Registration {
 
     private String username;
     private String place;
-    private long cnic;
+    private int id;
 
-    public void checkCandidate(String[] candidateNames, String[] candidatePlaces, long[] candidateId) {
-        boolean nameMatch = false;
-        boolean placeMatch = false;
-        boolean cnicMatch = false;
+    public void checkVoter(String[] voterNames, String[] voterPlaces, int[] voterId) {
+        boolean matchFound = false;
+        int matchedIndex = -1;
 
-        while (!nameMatch) {
-
-            for (int i = 0; i < candidateNames.length; i++) {
-                System.out.println("Enter your name:");
-                username = s.nextLine();
-                if (username.isEmpty()){
-                    System.out.println("Write something please:");
-                    continue;
-                }
-                if (username.equals(candidateNames[i])) {
-                    System.out.println("Name matched.");
-                    nameMatch = true;
-                    break;
-                }
+        while (!matchFound) {
+            System.out.println("Enter your name:");
+            username = s.nextLine();
+            if (username.isEmpty()) {
+                System.out.println("Write something please:");
+                continue;
             }
-            if (!nameMatch) {
-                System.out.println("Name not found. Please try again.");
-            }
-        }
-        while (!placeMatch) {
 
             System.out.println("Enter your place:");
             place = s.nextLine();
-            for (int i = 0; i < 1; i++) {
-                if (username.isEmpty()){
-                    System.out.println("Write something please:");
-                    continue;
-                }
-                if (place.equals(candidatePlaces[i])) {
-                    System.out.println("Place matched.");
-                    placeMatch = true;
+            if (place.isEmpty()) {
+                System.out.println("Write something please:");
+                continue;
+            }
+            
+            System.out.println("Enter your ID:");
+            id = s.nextInt();
+
+            for (int i = 0; i < voterNames.length; i++) {
+                if (username.equals(voterNames[i]) && place.equals(voterPlaces[i]) && id == voterId[i]) {
+
+                    System.out.println("Voter matched.");
+                    matchFound = true;
+                    matchedIndex = i;
                     break;
                 }
             }
 
-            if (!placeMatch) {
-                System.out.println("Place not found. Please try again.");
+            if (!matchFound) {
+                System.out.println("Voter not found. Please try avoter");
+                s.nextLine();
             }
         }
-        while (!cnicMatch) {
-            for (int i = 0; i < 1; i++) {
-                System.out.println("Enter your Cnic:");
-                cnic = s.nextLong();
-                if (username.isEmpty()){
-                    System.out.println("Write something please:");
-                    continue;
-                }
-                if (cnic == candidateId[i]) {
-                    System.out.println("CNIC matched.");
-                    cnicMatch = true;
-                    break;
-                }
-            }
-
-            if (!cnicMatch) {
-                System.out.println("CNIC not found. Please try again.");
-            }
+        if (matchedIndex != -1) {
+            System.out.println("Voter Information:");
+            System.out.println("Name: " + voterNames[matchedIndex]);
+            System.out.println("Place: " + voterPlaces[matchedIndex]);
+            System.out.println("ID: " + voterId[matchedIndex]);
         }
-
     }
 }
