@@ -9,6 +9,8 @@ public class Main {
         Registration registration = new Registration();
         Voter voter = new Voter();
         registration.checkVoter(voter.getVoterName(), voter.getVoterPlace(), voter.getVoterId());
+         Candidate candidate = new Candidate();
+        candidate.candidateDetail();
 
     }
 }
