@@ -1,16 +1,14 @@
 package VotingSystem;
 
-import Candidate.Candidate;
 import Registration.Registration;
+import Voter.Voter;
 
 public class Main {
     public static void main(String[] args) {
 
         Registration registration = new Registration();
-        Candidate candidate = new Candidate();
+        Voter voter = new Voter();
+        registration.checkVoter(voter.getVoterName(), voter.getVoterPlace(), voter.getVoterId());
 
-        registration.checkCandidate(candidate.getCandidateName(), candidate.getCandidatePlace(), candidate.getCandidateId());
-        candidate.displayData();
-        
     }
 }
